@@ -1,0 +1,26 @@
+title: Label taxonomy and reset automation
+sep-number: 7
+authors:
+  - "@shikanimedeva"
+owning-org: shikanime-labs
+participating-orgs:
+  - shikanime-studio
+status: provisional
+creation-date: 2026-10-27
+reviewers:
+  - TBD
+approvers:
+  - TBD
+
+see-also:
+  - "/seps/shikanime-labs/6-issue-templates"
+replaces: []
+
+stage: alpha
+
+milestone:
+  alpha: null
+  beta: null
+  stable: null
+
+disable-supported: true
