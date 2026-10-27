@@ -31,7 +31,8 @@ When unsure, file an issue here anyway — triage will sort it out.
 
 ## When to create an issue
 
-Create an [issue](../../issues/new/choose) once you:
+Create an [issue](https://github.com/shikanime-labs/enhancements/issues/new/choose)
+once you:
 
 - have circulated the idea in the relevant team channel, meeting, or repo
 - optionally have a prototype or proof of concept
