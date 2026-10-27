@@ -65,9 +65,26 @@ form, lowercase values:
 - `stage:` — SEP lifecycle in the enhancements repository
   (`provisional`, `implementable`, `implemented`, `rejected`,
   `withdrawn`). The only ordered family; one value at a time.
-- A family earns a prefix when it has two or more related values
-  answering one question. A single value takes the default form with no
-  prefix (`project`, `photoshoot`).
+- `reproduce:` — defect reproduction frequency, ordered buckets,
+  one value per defect: `always` (100% reproducible), `often`
+  (50–80%), `rare` (<50%), `none` (unable to reproduce by QA/Eng).
+  Applied by triage to `bug`-typed issues; drives prioritization
+  alongside `Priority` (an `always` P2 outranks a `none` P1 in
+  practice).
+- `backport:` — the release needing an already-landed change ported
+  back; the value is the target version tag (`backport:1.2`). Multi
+  value: a fix may need two branches; one label per target.
+- `candidate:` — the upcoming release this item is considered for;
+  value is the version (`candidate:1.3`). Removed when the item is
+  included or cut; `backport:` takes over once shipped and porting
+  remains.
+
+Version values carry digits and dots — the "single word" rule means no
+spaces, not no punctuation.
+
+A family earns a prefix when it has two or more related values
+answering one question. A single value takes the default form with no
+prefix (`project`, `photoshoot`).
 
 **Automation-owned** — present where the integration runs, excluded from
 resets: `dependencies` (Renovate), reviewer effort labels
