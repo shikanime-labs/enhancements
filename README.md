@@ -64,8 +64,7 @@ end of an enhancement.
 
 ## Labels
 
-- `org/labs`, `org/studio` — the owning and participating organizations
-- `stage/provisional`, `stage/implementable`, `stage/implemented`,
-  `stage/rejected`, `stage/withdrawn` — SEP status mirror
-- `kind/project` — new project proposal
+- `stage:provisional`, `stage:implementable`, `stage:implemented`,
+  `stage:rejected`, `stage:withdrawn` — SEP status mirror
+- `project` — new project proposal
 - `kind/enhancement` — enhancement to existing systems
