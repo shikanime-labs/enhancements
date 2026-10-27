@@ -12,8 +12,7 @@ reviewers:
 approvers:
   - TBD
 
-see-also:
-  - "/seps/shikanime-labs/6-issue-templates"
+see-also: []
 replaces: []
 
 stage: alpha

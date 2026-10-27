@@ -17,7 +17,8 @@ assignees: ""
 
 ## Stages
 
-- [ ] `provisional` — SEP merged, scope agreed
+- [ ] `provisional` — SEP merged, scope agreed (mirrors `sep.yaml`
+  `status`; tracked there and on the project board, not as labels)
   - [ ] SEP update PR(s):
 - [ ] `implementable` — design approved, implementation planned
   - [ ] Code PR(s):

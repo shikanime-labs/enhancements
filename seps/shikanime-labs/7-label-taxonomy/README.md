@@ -54,17 +54,20 @@ description:
 
 - GitHub defaults: `bug`, `documentation`, `duplicate`, `enhancement`,
   `good first issue`, `help wanted`, `invalid`, `question`, `wontfix`.
-- Triage quartet: `needs-triage` (Awaiting triage), `needs-info` (More
-  information required from reporter), `ready-for-agent` (Triage
-  complete; safe to delegate to an agent), `ready-for-human` (Triage
-  complete; needs human decision or review).
+
+That is the whole standard set. Workflow-state labels are deliberately
+absent: an item awaiting information gets the concerned person pinged or
+assigned; triage ordering is the `sks-triage` sweep's job, not label
+state. The former triage quartet (`needs-triage`, `needs-info`,
+`ready-for-agent`, `ready-for-human`) was removed org-wide after proving
+out as unused ceremony.
 
 **Scoped families** — repo-specific vocabularies, `prefix:value` colon
 form, lowercase values:
 
-- `stage:` — SEP lifecycle in the enhancements repository
-  (`provisional`, `implementable`, `implemented`, `rejected`,
-  `withdrawn`). The only ordered family; one value at a time.
+- `area:` — product/strategy area served (hakurei): `core`,
+  `combat`, `content`, `retention`, `security`, `release`. Multi
+  value: an item may serve several areas.
 - `reproduce:` — defect reproduction frequency, ordered buckets,
   one value per defect: `always` (100% reproducible), `often`
   (50–80%), `rare` (<50%), `none` (unable to reproduce by QA/Eng).
@@ -102,8 +105,8 @@ schedule, iterates the org's non-fork repositories and per repository:
 1. Reads current label definitions.
 2. Applies the standard set: creates missing labels, rewrites drifted
    colors and descriptions to canonical values.
-3. Verifies every scoped family member referenced by an issue form
-   (SEP-0006 (tracking issue #5)) exists.
+3. Verifies every scoped family member exists where its family's repo
+   declares it (the families section above names the owning repos).
 4. Emits a report: repos converged, repos deviating with the exact
    deviation, automation-owned labels skipped.
 
