@@ -1,0 +1,25 @@
+title: Standardized issue templates across org repositories
+sep-number: 6
+authors:
+  - "@shikanimedeva"
+owning-org: shikanime-labs
+participating-orgs:
+  - shikanime-studio
+status: provisional
+creation-date: 2026-10-27
+reviewers:
+  - TBD
+approvers:
+  - TBD
+
+see-also: []
+replaces: []
+
+stage: alpha
+
+milestone:
+  alpha: null
+  beta: null
+  stable: null
+
+disable-supported: true
