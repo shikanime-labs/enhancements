@@ -98,11 +98,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791203228,
-        "narHash": "sha256-zXpXixpbGh7GLSHWn/gByM4Py+W269bAvDG50ubAIBo=",
+        "lastModified": 1794504208,
+        "narHash": "sha256-+GjGDmgAXK8Kb9bOrJ7Kbfi4w/6AuyM4ggtoNrp5rRU=",
         "owner": "shikanime-studio",
         "repo": "devlib",
-        "rev": "fe229069ca0193805a3213091ac3856698356e33",
+        "rev": "c3a3bacfbec5b85b2ba642ae9bbd888aa4f9413b",
         "type": "github"
       },
       "original": {
