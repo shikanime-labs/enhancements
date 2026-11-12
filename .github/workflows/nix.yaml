@@ -47,8 +47,7 @@ jobs:
         with:
           extra_nix_config: |
             extra-system-features = kvm
-          github_access_token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github_access_token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
           install_url: https://releases.nixos.org/nix/nix-2.34.8/install
       - name: Push to Cachix
@@ -58,19 +57,16 @@ jobs:
           name: ${{ inputs['cachix-name'] }}
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         env:
-          HAS_CACHIX:
-            ${{ inputs['cachix-name'] != '' && secrets.CACHIX_AUTH_TOKEN != ''
+          HAS_CACHIX: ${{ inputs['cachix-name'] != '' && secrets.CACHIX_AUTH_TOKEN != ''
             }}
       - uses: shikanime-studio/actions/checkout@v9
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@v9
       - name: Run flake check
-        run:
-          nix flake check --accept-flake-config --no-pure-eval --system "${{
+        run: nix flake check --accept-flake-config --no-pure-eval --system "${{
           matrix.system }}"
         shell: bash
   packages:
@@ -100,8 +96,7 @@ jobs:
         with:
           extra_nix_config: |
             extra-system-features = kvm
-          github_access_token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github_access_token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
           install_url: https://releases.nixos.org/nix/nix-2.34.8/install
       - name: Push to Cachix
@@ -111,13 +106,11 @@ jobs:
           name: ${{ inputs['cachix-name'] }}
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         env:
-          HAS_CACHIX:
-            ${{ inputs['cachix-name'] != '' && secrets.CACHIX_AUTH_TOKEN != ''
+          HAS_CACHIX: ${{ inputs['cachix-name'] != '' && secrets.CACHIX_AUTH_TOKEN != ''
             }}
       - uses: shikanime-studio/actions/checkout@v9
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
       - id: direnv
         uses: shikanime-studio/actions/direnv@v9
@@ -145,14 +138,12 @@ jobs:
         with:
           extra_nix_config: |
             extra-system-features = kvm
-          github_access_token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github_access_token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
           install_url: https://releases.nixos.org/nix/nix-2.34.8/install
       - uses: shikanime-studio/actions/checkout@v9
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
       - id: setup-checks-jobs
         uses: shikanime-studio/actions/nix/setup-checks-jobs@v9
@@ -178,14 +169,12 @@ jobs:
         with:
           extra_nix_config: |
             extra-system-features = kvm
-          github_access_token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github_access_token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
           install_url: https://releases.nixos.org/nix/nix-2.34.8/install
       - uses: shikanime-studio/actions/checkout@v9
         with:
-          github-token:
-            ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
+          github-token: ${{ steps.createGithubAppToken.outputs.token || secrets.GITHUB_TOKEN
             }}
       - id: setup-packages-jobs
         uses: shikanime-studio/actions/nix/setup-packages-jobs@v9
