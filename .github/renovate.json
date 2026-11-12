@@ -4,6 +4,9 @@
     "config:best-practices",
     "security:openssf-scorecard"
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "nix": {
     "enabled": true
   },
