@@ -1,9 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    "security:openssf-scorecard"
-  ],
+  "extends": ["config:best-practices", "security:openssf-scorecard"],
   "lockFileMaintenance": {
     "enabled": true
   },
@@ -11,13 +8,9 @@
     "enabled": true
   },
   "postUpgradeTasks": {
-    "commands": [
-      "nix fmt"
-    ],
+    "commands": ["nix fmt"],
     "executionMode": "branch",
-    "fileFilters": [
-      "**/*.nix"
-    ],
+    "fileFilters": ["**/*.nix"],
     "installTools": {
       "nix": {}
     }
