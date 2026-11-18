@@ -1,0 +1,26 @@
+title: In-repo docs as the agent workflow knowledge base
+sep-number: 15
+authors:
+  - "@shikanimedeva"
+owning-org: shikanime-labs
+participating-orgs:
+  - shikanime-studio
+status: provisional
+creation-date: 2026-11-18
+reviewers:
+  - TBD
+approvers:
+  - TBD
+
+see-also:
+  - "https://github.com/shikanime-labs/skills/issues/636"
+replaces: []
+
+stage: alpha
+
+milestone:
+  alpha: null
+  beta: null
+  stable: null
+
+disable-supported: true
