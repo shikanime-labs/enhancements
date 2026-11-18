@@ -3,10 +3,10 @@
 ## Summary
 
 One label convention for every non-fork repository in both orgs, and a
-workflow that keeps repositories converged to it. The convention is two
-layers — an org-wide standard set and repo-scoped families using the
-`prefix:value` colon form — plus explicit exceptions for labels owned by
-automation.
+workflow that keeps repositories converged to it. The convention has two
+label layers — an org-wide standard set and repo-scoped families using the
+`prefix:value` colon form — plus org-level issue fields for structured
+metadata, and explicit exceptions for labels owned by automation.
 
 The reset automation re-applies the standard set with canonical colors
 and descriptions, reports deviations, and never touches automation-owned
@@ -39,8 +39,8 @@ maintained invariant instead of a memory.
 
 ### Non-Goals
 
-- Governing GitHub Projects fields (`Priority`, `Size`, `Status`) —
-  boards own their field configuration; that is a separate concern.
+- Governing project-board-only fields that are not org-level issue fields;
+  boards own their own configuration.
 - Migrating issue/PR label usage during a reset; the reset reconciles
   definitions, and renames migrate usage explicitly as one-off PRs.
 - Governing fork repositories; they track upstream.
@@ -67,13 +67,12 @@ form, lowercase values:
 
 - `area:` — product/strategy area served (hakurei): `core`,
   `combat`, `content`, `retention`, `security`, `release`. Multi
-  value: an item may serve several areas.
-- `reproduce:` — defect reproduction frequency, ordered buckets,
-  one value per defect: `always` (100% reproducible), `often`
-  (50–80%), `rare` (<50%), `none` (unable to reproduce by QA/Eng).
-  Applied by triage to `bug`-typed issues; drives prioritization
-  alongside `Priority` (an `always` P2 outranks a `none` P1 in
-  practice).
+  value: an item may serve several areas. This family stays in labels:
+  domain vocabulary belongs to the owning repo, so a shared field cannot
+  express it.
+- `risk:` — blast radius, ordered severity buckets: `high`, `medium`,
+  `low`. One value per item. Fastlane eligibility reads `risk:low` from
+  the PR or its linked issues.
 - `backport:` — the release needing an already-landed change ported
   back; the value is the target version tag (`backport:1.2`). Multi
   value: a fix may need two branches; one label per target.
@@ -81,6 +80,23 @@ form, lowercase values:
   value is the version (`candidate:1.3`). Removed when the item is
   included or cut; `backport:` takes over once shipped and porting
   remains.
+
+**Org-level issue fields** — structured metadata lives in fields available
+to every issue in the org, not in labels:
+
+- `Effort` — single-select with options `High`, `Medium`, `Low`. Blast
+  radius stays a `risk:*` label family, not a field.
+- `Reproduce` — single-select with `Always`, `Often`, `Rare`, `None`.
+  Replaces the former `reproduce:` labels; all prior usages were
+  backfilled before those labels were deleted.
+- `Priority`, `Start date`, `Target date` — existing org fields, unchanged.
+- `Area` was trialed as a single-select field and then as a text field,
+  and both trials were reverted. The repo-scoped `area:` label family is
+  the intended home for domain vocabulary.
+
+Backfill every label usage into its field before deleting the label.
+Deleting a label strips it from every issue and PR, and the API does not
+move values to fields.
 
 Version values carry digits and dots — the "single word" rule means no
 spaces, not no punctuation.
@@ -90,8 +106,8 @@ answering one question. A single value takes the default form with no
 prefix (`project`, `photoshoot`).
 
 **Automation-owned** — present where the integration runs, excluded from
-resets: `dependencies` (Renovate), reviewer effort labels
-(`Review effort N/5`, `Possible security concern`).
+resets: `dependencies` (Renovate). Reviewer effort labels were removed
+org-wide after the `Effort` field was adopted.
 
 Naming: the standard set keeps GitHub default syntax (lowercase words,
 spaces or hyphens as already established); scoped families use the
@@ -180,3 +196,7 @@ None beyond GitHub Actions minutes in the two org `.github` repos.
 - 2026-10-27: SEP drafted and filed with tracking issue #7. The audited
   state it codifies was reached by the 2026-10 audit passes (quartet
   rollout, legacy label removal, colon-prefix restore).
+- 2026-11-18: structured metadata moved to org-level issue fields.
+  `Reproduce` and `Effort` usages were backfilled before their labels were
+  deleted; `Risk` and `Area` were reverted to labels after field trials.
+  This SEP now records the field layer and the backfill-before-delete rule.
