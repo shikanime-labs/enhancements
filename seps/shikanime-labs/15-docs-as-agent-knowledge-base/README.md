@@ -33,8 +33,9 @@ cannot provide.
 
 - One source of truth per fact: agent-facing knowledge in `docs/`, human
   overview in the wiki, links between them, never two copies.
-- An agent can find the workflow for any of the 48 `sks-*` skills by following
-  pointers from the skill it already loaded, without loading the whole family.
+- An agent can find the workflow for any of the 48 `sks-*` skills through the
+  family map in `docs/agent-workflow.md`, or through pointers from the four
+  entry skills already loaded, without loading the whole family.
 - No wiki page points at a path that is absent from `main`.
 
 ### Non-Goals
@@ -95,10 +96,10 @@ work.
 
 Each implementation unit carries a command-decidable acceptance ledger: the
 doctrine text exists in `sks-wiki`, `docs/agent-workflow.md` maps every `sks-*`
-skill with a load condition, the four named skills link to it, wiki `Home` and
-`Operations` resolve against `main`, and no agent-facing workflow fact exists
-only in the wiki. Verification is a repository grep plus a rendered-page check,
-not a subjective review.
+skill with a load condition, the four named skills link to it, every repository
+link on every wiki page resolves against `main`, and no agent-facing workflow
+fact exists only in the wiki. Verification is a repository grep plus a
+rendered-page check, not a subjective review.
 
 ### Graduation Criteria
 
@@ -114,8 +115,9 @@ Each unit lands through the normal dev loop in `shikanime-labs/skills`: jj
 workspace off `main@origin`, one commit per unit, PR per unit, squash merge in
 dependency order. Unit 1 lands before any content moves. The wiki change is a
 plain push after the in-repo doc exists, so no reader sees a link to a missing
-file. Rollback is per unit: revert the commit, then repoint the wiki if unit 4
-has landed.
+file. Rollback runs in reverse dependency order: remove or redirect the wiki
+and skill pointers first, then revert the document commit, and verify the
+replacement target exists before any pointer moves.
 
 ## Drawbacks
 
